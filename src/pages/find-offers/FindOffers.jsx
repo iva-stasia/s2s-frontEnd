@@ -11,11 +11,12 @@ import useUrlSearchParams from '~/hooks/use-url-search-params'
 import AppContentSwitcher from '~/components/app-content-switcher/AppContentSwitcher'
 import useAxios from '~/hooks/use-axios'
 import { defaultResponses } from '~/constants'
-import OfferRequestBlock from '~/components/offer-request-block/OfferRequestBlock'
+import HeaderCard from '~/components/header-card/HeaderCard'
 import SearchToolbar from '~/components/search-toolbar/SearchToolbar'
 import PopularCategories from '~/components/popular-categories/PopularCategories'
 import OffersContainer from '~/containers/offers-container/OffersContainer'
 import { categoryService } from '~/services/category-service'
+import subjectIcon from '~/assets/img/offer-page/subject-icon.svg'
 
 import { styles } from '~/pages/find-offers/FindOffers.styles'
 
@@ -72,7 +73,14 @@ const FindOffers = () => {
 
   return (
     <PageWrapper>
-      <OfferRequestBlock userRole={userRole} />
+      <HeaderCard
+        description={'findOffers.offerRequestBlock.description'}
+        imageAlt='Subject'
+        imageSrc={subjectIcon}
+        titleStudent={'findOffers.offerRequestBlock.title.student'}
+        titleTutor={'findOffers.offerRequestBlock.title.tutor'}
+        userRole={userRole}
+      />
       <SearchToolbar
         author={author}
         categoryName={categoryName}

@@ -2,8 +2,9 @@ import NoResultsFound from '~/components/no-results-found/NoResultsFound'
 import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import CategoriesList from '~/components/categories-list/CategoriesList'
 import CategoriesSearch from '~/containers/categories-search/CategoriesSearch'
-import OfferRequestBlock from '~/components/offer-request-block/OfferRequestBlock'
+import HeaderCard from '~/components/header-card/HeaderCard'
 import RequestNewCategorySubject from '~/components/request-new-category-subject/RequestNewCategorySubject'
+import subjectIcon from '~/assets/img/offer-page/subject-icon.svg'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -18,7 +19,14 @@ const Categories = () => {
   }
   return (
     <PageWrapper>
-      <OfferRequestBlock userRole={userRole} />
+      <HeaderCard
+        description={'findOffers.offerRequestBlock.description'}
+        imageAlt='Subject'
+        imageSrc={subjectIcon}
+        titleStudent={'findOffers.offerRequestBlock.title.student'}
+        titleTutor={'findOffers.offerRequestBlock.title.tutor'}
+        userRole={userRole}
+      />
       <CategoriesSearch onSearchResults={handleSearchResults} />
       <RequestNewCategorySubject />
       {searchPerformed && searchResults.length === 0 ? (
