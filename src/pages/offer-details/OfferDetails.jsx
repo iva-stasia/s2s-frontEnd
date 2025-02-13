@@ -5,16 +5,24 @@ import { useSelector } from 'react-redux'
 
 const OfferDetails = () => {
   const { userRole } = useSelector((state) => state.appMain)
+  const isTutor = userRole === 'tutor'
   return (
     <PageWrapper>
       <HeaderCard
+        buttonText={
+          isTutor
+            ? 'findOffers.offerRequestBlock.button.tutor'
+            : 'findOffers.offerRequestBlock.button.student'
+        }
         description={'offerDetailsPage.topBlock.description'}
         imageAlt='Offer'
         imageSrc={offerIcon}
         showButton={false}
-        titleStudent={'offerDetailsPage.topBlock.title.student'}
-        titleTutor={'offerDetailsPage.topBlock.title.tutor'}
-        userRole={userRole}
+        title={
+          isTutor
+            ? 'offerDetailsPage.topBlock.title.tutor'
+            : 'offerDetailsPage.topBlock.title.student'
+        }
       />
     </PageWrapper>
   )

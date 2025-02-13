@@ -69,17 +69,25 @@ const FindOffers = () => {
     setUrlSearchParams({ authorRole: newAuthorRole })
   }
 
+  const isTutor = userRole === 'tutor'
   const offers = response.items?.length > 0 ? response.items : []
 
   return (
     <PageWrapper>
       <HeaderCard
+        buttonText={
+          isTutor
+            ? 'findOffers.offerRequestBlock.button.tutor'
+            : 'findOffers.offerRequestBlock.button.student'
+        }
         description={'findOffers.offerRequestBlock.description'}
         imageAlt='Subject'
         imageSrc={subjectIcon}
-        titleStudent={'findOffers.offerRequestBlock.title.student'}
-        titleTutor={'findOffers.offerRequestBlock.title.tutor'}
-        userRole={userRole}
+        title={
+          isTutor
+            ? 'findOffers.offerRequestBlock.title.tutor'
+            : 'findOffers.offerRequestBlock.title.student'
+        }
       />
       <SearchToolbar
         author={author}

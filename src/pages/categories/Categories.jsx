@@ -17,15 +17,24 @@ const Categories = () => {
     setSearchResults(results)
     setSearchPerformed(true)
   }
+  const isTutor = userRole === 'tutor'
+
   return (
     <PageWrapper>
       <HeaderCard
+        buttonText={
+          isTutor
+            ? 'findOffers.offerRequestBlock.button.tutor'
+            : 'findOffers.offerRequestBlock.button.student'
+        }
         description={'findOffers.offerRequestBlock.description'}
         imageAlt='Subject'
         imageSrc={subjectIcon}
-        titleStudent={'findOffers.offerRequestBlock.title.student'}
-        titleTutor={'findOffers.offerRequestBlock.title.tutor'}
-        userRole={userRole}
+        title={
+          isTutor
+            ? 'findOffers.offerRequestBlock.title.tutor'
+            : 'findOffers.offerRequestBlock.title.student'
+        }
       />
       <CategoriesSearch onSearchResults={handleSearchResults} />
       <RequestNewCategorySubject />

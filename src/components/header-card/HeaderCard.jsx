@@ -8,17 +8,15 @@ import AppDrawer from '../app-drawer/AppDrawer'
 import { useDrawer } from '~/hooks/use-drawer'
 
 const HeaderCard = ({
+  buttonText,
   description,
   imageAlt,
   imageSrc,
   showButton = true,
-  titleStudent,
-  titleTutor,
-  userRole
+  title
 }) => {
   const { t } = useTranslation()
   const { isOpen, openDrawer, closeDrawer } = useDrawer()
-  const isTutor = userRole === 'tutor'
 
   const handleOpenDrawer = () => {
     openDrawer()
@@ -32,13 +30,11 @@ const HeaderCard = ({
             <TitleWithDescription
               description={t(description)}
               style={styles.titleWithDescription}
-              title={isTutor ? t(titleTutor) : t(titleStudent)}
+              title={t(title)}
             />
             {showButton && (
               <AppButton onClick={handleOpenDrawer} sx={styles.button}>
-                {isTutor
-                  ? t('findOffers.offerRequestBlock.button.tutor')
-                  : t('findOffers.offerRequestBlock.button.student')}
+                {t(buttonText)}
               </AppButton>
             )}
           </Grid>
