@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { vi } from 'vitest'
-import OfferRequestBlock from '~/components/offer-request-block/OfferRequestBlock'
+import HeaderCard from '~/components/header-card/HeaderCard'
 
 vi.mock('~/hooks/use-confirm', () => {
   return {
@@ -40,15 +40,15 @@ vi.mock('@mui/material', async () => {
   }
 })
 
-describe('OfferRequestBlock test', () => {
+describe('HeaderCard test', () => {
   const props = {
     userRole: 'student'
   }
   beforeEach(() => {
-    render(<OfferRequestBlock {...props} />)
+    render(<HeaderCard {...props} />)
   })
 
-  it('should render OfferRequestBlock with userRole prop', () => {
+  it('should render HeaderCard with userRole prop', () => {
     const userRole = screen.getAllByText(/student/i)
     expect(userRole.length).not.toBeNull()
   })
@@ -76,7 +76,7 @@ describe('OfferRequestBlock test', () => {
     const props = {
       userRole: 'tutor'
     }
-    render(<OfferRequestBlock {...props} />)
+    render(<HeaderCard {...props} />)
 
     const title = screen.getByText(/findOffers.offerRequestBlock.title.tutor/i)
     expect(title).toBeInTheDocument()

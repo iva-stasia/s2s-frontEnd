@@ -10,10 +10,10 @@ vi.mock('~/components/page-wrapper/PageWrapper', () => {
   }
 })
 
-vi.mock('~/components/offer-request-block/OfferRequestBlock', () => {
+vi.mock('~/components/header-card/HeaderCard', () => {
   return {
     __esModule: true,
-    default: () => <div>OfferRequestBlock</div>
+    default: () => <div>HeaderCard</div>
   }
 })
 
@@ -58,8 +58,8 @@ describe('Categories Component', () => {
     renderWithProviders(<Categories />)
   })
 
-  it('should render OfferRequestBlock block', () => {
-    const offerRequestBlock = screen.getByText(/OfferRequestBlock/i)
+  it('should render HeaderCard block', () => {
+    const offerRequestBlock = screen.getByText(/HeaderCard/i)
     expect(offerRequestBlock).toBeInTheDocument()
   })
 

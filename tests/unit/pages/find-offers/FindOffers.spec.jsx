@@ -54,7 +54,7 @@ vi.mock('~/components/app-view-switcher/AppViewSwitcher', () => ({
   )
 }))
 
-vi.mock('~/components/offer-request-block/OfferRequestBlock', () => ({
+vi.mock('~/components/header-card/HeaderCard', () => ({
   default: () => <div data-testid='offerRequestBlock' />
 }))
 
