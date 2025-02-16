@@ -75,11 +75,7 @@ const FindOffers = () => {
   return (
     <PageWrapper>
       <HeaderCard
-        buttonText={
-          isTutor
-            ? 'findOffers.offerRequestBlock.button.tutor'
-            : 'findOffers.offerRequestBlock.button.student'
-        }
+        buttonText={`findOffers.offerRequestBlock.button.${userRole}`}
         description={'findOffers.offerRequestBlock.description'}
         imageAlt='Subject'
         imageSrc={subjectIcon}

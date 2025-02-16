@@ -7,14 +7,7 @@ import TitleWithDescription from '~/components/title-with-description/TitleWithD
 import AppDrawer from '../app-drawer/AppDrawer'
 import { useDrawer } from '~/hooks/use-drawer'
 
-const HeaderCard = ({
-  buttonText,
-  description,
-  imageAlt,
-  imageSrc,
-  showButton = true,
-  title
-}) => {
+const HeaderCard = ({ buttonText, description, imageAlt, imageSrc, title }) => {
   const { t } = useTranslation()
   const { isOpen, openDrawer, closeDrawer } = useDrawer()
 
@@ -32,7 +25,7 @@ const HeaderCard = ({
               style={styles.titleWithDescription}
               title={t(title)}
             />
-            {showButton && (
+            {buttonText && (
               <AppButton onClick={handleOpenDrawer} sx={styles.button}>
                 {t(buttonText)}
               </AppButton>

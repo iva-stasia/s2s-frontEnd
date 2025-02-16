@@ -9,15 +9,10 @@ const OfferDetails = () => {
   return (
     <PageWrapper>
       <HeaderCard
-        buttonText={
-          isTutor
-            ? 'findOffers.offerRequestBlock.button.tutor'
-            : 'findOffers.offerRequestBlock.button.student'
-        }
+        buttonText={false}
         description={'offerDetailsPage.topBlock.description'}
         imageAlt='Offer'
         imageSrc={offerIcon}
-        showButton={false}
         title={
           isTutor
             ? 'offerDetailsPage.topBlock.title.tutor'
