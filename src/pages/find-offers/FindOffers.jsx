@@ -11,11 +11,12 @@ import useUrlSearchParams from '~/hooks/use-url-search-params'
 import AppContentSwitcher from '~/components/app-content-switcher/AppContentSwitcher'
 import useAxios from '~/hooks/use-axios'
 import { defaultResponses } from '~/constants'
-import OfferRequestBlock from '~/components/offer-request-block/OfferRequestBlock'
+import HeaderCard from '~/components/header-card/HeaderCard'
 import SearchToolbar from '~/components/search-toolbar/SearchToolbar'
 import PopularCategories from '~/components/popular-categories/PopularCategories'
 import OffersContainer from '~/containers/offers-container/OffersContainer'
 import { categoryService } from '~/services/category-service'
+import subjectIcon from '~/assets/img/offer-page/subject-icon.svg'
 
 import { styles } from '~/pages/find-offers/FindOffers.styles'
 
@@ -68,11 +69,22 @@ const FindOffers = () => {
     setUrlSearchParams({ authorRole: newAuthorRole })
   }
 
+  const isTutor = userRole === 'tutor'
   const offers = response.items?.length > 0 ? response.items : []
 
   return (
     <PageWrapper>
-      <OfferRequestBlock userRole={userRole} />
+      <HeaderCard
+        buttonText={`findOffers.offerRequestBlock.button.${userRole}`}
+        description={'findOffers.offerRequestBlock.description'}
+        imageAlt='Subject'
+        imageSrc={subjectIcon}
+        title={
+          isTutor
+            ? 'findOffers.offerRequestBlock.title.tutor'
+            : 'findOffers.offerRequestBlock.title.student'
+        }
+      />
       <SearchToolbar
         author={author}
         categoryName={categoryName}
