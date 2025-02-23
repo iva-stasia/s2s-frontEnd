@@ -62,6 +62,12 @@ const appTypography = {
     lineHeight: '20px',
     letterSpacing: '0.0025em'
   },
+  body3: {
+    fontWeight: 400,
+    fontSize: '16px',
+    lineHeight: '25px',
+    letterSpacing: '0.5px'
+  },
   caption: {
     fontWeight: 400,
     fontSize: '12px',
@@ -87,6 +93,13 @@ const appTypography = {
     fontSize: '14px',
     lineHeight: '20px',
     letterSpacing: '0.5px',
+    textTransform: 'initial'
+  },
+  button2: {
+    fontWeight: 500,
+    fontSize: '16px',
+    lineHeight: '24px',
+    letterSpacing: '0.15px',
     textTransform: 'initial'
   }
 }

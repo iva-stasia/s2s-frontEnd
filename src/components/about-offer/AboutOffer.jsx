@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next'
 import aboutOfferTitle from '~/constants/translations/en/common'
 import showMore from '~/constants/translations/en/common'
 import showLess from '~/constants/translations/en/common'
+import { styles } from '~/components/about-offer/AboutOffer.styles'
 import { useState } from 'react'
+
 const AboutOffer = ({ offer }) => {
   const { t } = useTranslation()
   const [showFullDescription, setShowFullDescription] = useState(false)
@@ -22,16 +24,16 @@ const AboutOffer = ({ offer }) => {
   return (
     <PageWrapper>
       <Typography>{t(`${aboutOfferTitle.aboutOffer}`)}</Typography>
-      <Typography>
+      <Typography sx={styles.description}>
         {showFullDescription ? offer?.description : shortDescroption}
       </Typography>
       {!showFullDescription && (
-        <Typography onClick={handleShowMore}>
+        <Typography onClick={handleShowMore} sx={styles.showDescriptionButton}>
           {t(`${showMore.showMore}`)}
         </Typography>
       )}
       {showFullDescription && (
-        <Typography onClick={handleShowLess}>
+        <Typography onClick={handleShowLess} sx={styles.showDescriptionButton}>
           {t(`${showLess.showLess}`)}
         </Typography>
       )}
