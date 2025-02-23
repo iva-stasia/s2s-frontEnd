@@ -3,16 +3,38 @@ import Typography from '@mui/material/Typography'
 import { useTranslation } from 'react-i18next'
 import aboutOfferTitle from '~/constants/translations/en/common'
 import showMore from '~/constants/translations/en/common'
-
-const AboutOffer = ({ id, offer }) => {
+import showLess from '~/constants/translations/en/common'
+import { useState } from 'react'
+const AboutOffer = ({ offer }) => {
   const { t } = useTranslation()
+  const [showFullDescription, setShowFullDescription] = useState(false)
+  const shortDescroption =
+    offer?.description.split(' ').slice(0, 5).join(' ') + ' ...'
+
+  const handleShowMore = () => {
+    setShowFullDescription(true)
+  }
+
+  const handleShowLess = () => {
+    setShowFullDescription(false)
+  }
 
   return (
     <PageWrapper>
       <Typography>{t(`${aboutOfferTitle.aboutOffer}`)}</Typography>
-      <Typography>{id}</Typography>
-      <Typography>{offer?.description}</Typography>
-      <Typography>{t(`${showMore.showMore}`)}</Typography>
+      <Typography>
+        {showFullDescription ? offer?.description : shortDescroption}
+      </Typography>
+      {!showFullDescription && (
+        <Typography onClick={handleShowMore}>
+          {t(`${showMore.showMore}`)}
+        </Typography>
+      )}
+      {showFullDescription && (
+        <Typography onClick={handleShowLess}>
+          {t(`${showLess.showLess}`)}
+        </Typography>
+      )}
     </PageWrapper>
   )
 }

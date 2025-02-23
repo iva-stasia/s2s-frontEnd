@@ -41,7 +41,7 @@ const OfferDetails = () => {
             : 'offerDetailsPage.topBlock.title.student'
         }
       />
-      <AboutOffer id={codedOfferId} offer={offer} />
+      <AboutOffer offer={offer} />
     </PageWrapper>
   )
 }
