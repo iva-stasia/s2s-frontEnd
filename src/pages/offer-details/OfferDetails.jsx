@@ -3,11 +3,15 @@ import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
+import aboutOfferTitle from '~/constants/translations/en/common'
+import OfferDetailsContainer from '~/containers/offer-details-container/OfferDetailsContainer'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import { offerService } from '~/services/offer-service'
+import { useTranslation } from 'react-i18next'
 
 const OfferDetails = () => {
+  const { t } = useTranslation()
   const { pathname } = useLocation()
   const codedOfferId = pathname.split('/')[2]
 
@@ -41,7 +45,9 @@ const OfferDetails = () => {
             : 'offerDetailsPage.topBlock.title.student'
         }
       />
-      <AboutOffer offer={offer} />
+      <OfferDetailsContainer title={t(`${aboutOfferTitle.aboutOffer}`)}>
+        <AboutOffer offer={offer} />
+      </OfferDetailsContainer>
     </PageWrapper>
   )
 }
