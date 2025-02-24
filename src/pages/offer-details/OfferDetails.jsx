@@ -4,19 +4,18 @@ import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
 import { useSelector } from 'react-redux'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { offerService } from '~/services/offer-service'
 
 const OfferDetails = () => {
-  const { pathname } = useLocation()
-  const codedOfferId = pathname.split('/')[2]
+  const { id } = useParams()
 
-  const [offer, setOffer] = useState(null)
+  const [offer, setOffer] = useState({})
 
   useEffect(() => {
     const fetchOfferDetails = async () => {
       try {
-        const response = await offerService.getOfferById(codedOfferId)
+        const response = await offerService.getOfferById(id)
         setOffer(response.data)
       } catch (err) {
         console.log(err)
@@ -24,7 +23,7 @@ const OfferDetails = () => {
     }
 
     fetchOfferDetails()
-  }, [codedOfferId])
+  }, [id])
 
   const { userRole } = useSelector((state) => state.appMain)
   const isTutor = userRole === 'tutor'
