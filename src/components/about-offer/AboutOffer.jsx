@@ -2,7 +2,7 @@ import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import Typography from '@mui/material/Typography'
 import { useTranslation } from 'react-i18next'
 import {
-  aboutOfferTitle,
+  aboutOffer,
   showLess,
   showMore
 } from '~/constants/translations/en/common'
@@ -13,7 +13,7 @@ const AboutOffer = ({ offer }) => {
   const { t } = useTranslation()
   const [showFullDescription, setShowFullDescription] = useState(false)
   const shortDescroption =
-    offer?.description.split(' ').slice(0, 5).join(' ') + ' ...'
+    offer?.description?.split(' ').slice(0, 5).join(' ') + ' ...'
 
   const handleShowMore = () => {
     setShowFullDescription(true)
@@ -25,7 +25,7 @@ const AboutOffer = ({ offer }) => {
 
   return (
     <PageWrapper>
-      <Typography>{t(`${aboutOfferTitle.aboutOffer}`)}</Typography>
+      <Typography>{t(`${aboutOffer.aboutOffer}`)}</Typography>
       <Typography sx={styles.description}>
         {showFullDescription ? offer?.description : shortDescroption}
       </Typography>
