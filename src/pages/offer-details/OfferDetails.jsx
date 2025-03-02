@@ -3,14 +3,18 @@ import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
+import aboutOfferTitle from '~/constants/translations/en/common'
+import OfferDetailsContainer from '~/containers/offer-details-container/OfferDetailsContainer'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { offerService } from '~/services/offer-service'
 import useAxios from '~/hooks/use-axios'
 import Loader from '~/components/loader/Loader'
 import NotFound from '~/pages/error/NotFound'
 
 const OfferDetails = () => {
+  const { t } = useTranslation()
   const { id } = useParams()
   const serviceFunction = useCallback(() => offerService.getOfferById(id), [id])
   const onResponseFunction = useCallback((data) => {
@@ -45,7 +49,9 @@ const OfferDetails = () => {
             : 'offerDetailsPage.topBlock.title.student'
         }
       />
-      <AboutOffer offer={offer} />
+      <OfferDetailsContainer title={t(`${aboutOfferTitle.aboutOffer}`)}>
+        <AboutOffer offer={offer} />
+      </OfferDetailsContainer>
     </PageWrapper>
   )
 }
