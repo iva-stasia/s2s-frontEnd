@@ -3,7 +3,6 @@ import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
-import aboutOfferTitle from '~/constants/translations/en/common'
 import OfferDetailsContainer from '~/containers/offer-details-container/OfferDetailsContainer'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -49,7 +48,7 @@ const OfferDetails = () => {
             : 'offerDetailsPage.topBlock.title.student'
         }
       />
-      <OfferDetailsContainer title={t(`${aboutOfferTitle.aboutOffer}`)}>
+      <OfferDetailsContainer title={t('common.aboutOffer')}>
         <AboutOffer offer={offer} />
       </OfferDetailsContainer>
     </PageWrapper>
