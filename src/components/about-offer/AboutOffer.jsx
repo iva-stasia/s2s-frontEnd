@@ -1,11 +1,7 @@
 import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import Typography from '@mui/material/Typography'
 import { useTranslation } from 'react-i18next'
-import {
-  aboutOffer,
-  showLess,
-  showMore
-} from '~/constants/translations/en/common'
+//import { common } from '~/constants/translations/en/common'
 import { styles } from '~/components/about-offer/AboutOffer.styles'
 import { useState } from 'react'
 
@@ -25,7 +21,7 @@ const AboutOffer = ({ offer }) => {
 
   return (
     <PageWrapper>
-      <Typography>{t(`${aboutOffer.aboutOffer}`)}</Typography>
+      <Typography>{t('common.aboutOffer')}</Typography>
       <Typography sx={styles.description}>
         {showFullDescription ? offer?.description : shortDescroption}
       </Typography>
@@ -33,9 +29,7 @@ const AboutOffer = ({ offer }) => {
         onClick={showFullDescription ? handleShowLess : handleShowMore}
         sx={styles.showDescriptionButton}
       >
-        {t(
-          showFullDescription ? `${showLess.showLess}` : `${showMore.showMore}`
-        )}
+        {t(showFullDescription ? 'common.showLess' : 'common.showMore')}
       </Typography>
     </PageWrapper>
   )
