@@ -20,19 +20,6 @@ const AboutOffer = ({ offer }) => {
 
   return (
     <Box>
-      {/* <Typography sx={styles.description}>
-        {showFullDescription ? offer?.description : shortDescroption}
-      </Typography>
-      {!showFullDescription && (
-        <Typography onClick={handleShowMore} sx={styles.showDescriptionButton}>
-          {t('common.showMore')}
-        </Typography>
-      )}
-      {showFullDescription && (
-        <Typography onClick={handleShowLess} sx={styles.showDescriptionButton}>
-          {t('common.showLess')}
-        </Typography>
-      )} */}
       <Typography sx={styles.description}>
         {showFullDescription ? offer?.description : shortDescroption}
       </Typography>

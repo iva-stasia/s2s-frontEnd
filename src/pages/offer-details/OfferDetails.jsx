@@ -16,18 +16,13 @@ const OfferDetails = () => {
   const { t } = useTranslation()
   const { id } = useParams()
   const serviceFunction = useCallback(() => offerService.getOfferById(id), [id])
-  const onResponseFunction = useCallback((data) => {
-    console.log('received: ', data)
-  }, [])
   const {
     response: offer,
     error,
     loading
   } = useAxios({
     service: serviceFunction,
-    defaultResponse: {},
-    fetchOnMount: true,
-    onResponse: onResponseFunction
+    defaultResponse: {}
   })
   const { userRole } = useSelector((state) => state.appMain)
   const isTutor = userRole === 'tutor'

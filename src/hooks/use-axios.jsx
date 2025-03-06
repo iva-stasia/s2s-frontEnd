@@ -15,7 +15,6 @@ const useAxios = ({
   const fetchData = useCallback(
     async (params) => {
       try {
-        console.log('hi', params)
         setLoading(true)
         const res = await service(params)
         const responseData = transform ? transform(res.data) : res.data
