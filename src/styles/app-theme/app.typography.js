@@ -101,6 +101,12 @@ const appTypography = {
     lineHeight: '24px',
     letterSpacing: '0.15px',
     textTransform: 'initial'
+  },
+  li1: {
+    fontWeight: 400,
+    fontSize: '16px',
+    lineHeight: '20px',
+    letterSpacing: '0.5px'
   }
 }
 
