@@ -9,40 +9,44 @@ import { useTranslation } from 'react-i18next'
 
 const OfferGeneralInformation = ({ offer }) => {
   const { t } = useTranslation()
+  const generalInfo = [
+    {
+      imgAlt: 'Category',
+      imgSrc: categoryImg,
+      offerElement: offer.subject.name,
+      title: t('offerDetailsPage.generalInfo.subject')
+    },
+    {
+      imgAlt: 'Bar-chart',
+      imgSrc: barChartImg,
+      offerElement: offer.proficiencyLevel,
+      title: t('offerDetailsPage.generalInfo.levels')
+    },
+    {
+      imgAlt: 'Vector',
+      imgSrc: vectorImg,
+      offerElement: offer.languages,
+      title: t('offerDetailsPage.generalInfo.languages')
+    },
+    {
+      imgAlt: 'Pace',
+      imgSrc: paceImg,
+      offerElement: offer.price,
+      title: t('offerDetailsPage.generalInfo.duration')
+    },
+    {
+      imgAlt: 'Price',
+      imgSrc: priceImg,
+      offerElement: t(`${offer.price} UAH/hour`),
+      title: t('offerDetailsPage.generalInfo.price')
+    }
+  ]
 
   return (
     <Box>
-      <OfferGeneralInformationCard
-        imgAlt={'Category'}
-        imgSrc={categoryImg}
-        index={0}
-        offerElement={offer.subject.name}
-        title={t('offerDetailsPage.generalInfo.subject')}
-      />
-      <OfferGeneralInformationCard
-        imgAlt={'Bar-Chart'}
-        imgSrc={barChartImg}
-        offerElement={offer.proficiencyLevel}
-        title={t('offerDetailsPage.generalInfo.levels')}
-      />
-      <OfferGeneralInformationCard
-        imgAlt={'Vector'}
-        imgSrc={vectorImg}
-        offerElement={offer.languages}
-        title={t('offerDetailsPage.generalInfo.languages')}
-      />
-      <OfferGeneralInformationCard
-        imgAlt={'Pace'}
-        imgSrc={paceImg}
-        offerElement={offer.price}
-        title={t('offerDetailsPage.generalInfo.duration')}
-      />
-      <OfferGeneralInformationCard
-        imgAlt={'Price'}
-        imgSrc={priceImg}
-        offerElement={t(`${offer.price} UAH/hour`)}
-        title={t('offerDetailsPage.generalInfo.price')}
-      />
+      {generalInfo.map((info, index) => (
+        <OfferGeneralInformationCard key={index} {...info} />
+      ))}
     </Box>
   )
 }

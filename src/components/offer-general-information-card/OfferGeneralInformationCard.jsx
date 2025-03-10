@@ -10,12 +10,10 @@ const OfferGeneralInformationCard = ({
   offerElement,
   title
 }) => {
-  console.log(offerElement)
-
   return (
     <Box sx={{ ...styles.container, marginTop: index === 0 ? 0 : '10px' }}>
       <Box alt={imgAlt} component='img' src={imgSrc} sx={styles.img}></Box>
-      <Box style={{ marginLeft: '30px' }}>
+      <Box sx={{ marginLeft: { md: '30px', xs: '10px' } }}>
         <Typography sx={styles.title}>{title}</Typography>
         {Array.isArray(offerElement) ? (
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
@@ -34,7 +32,6 @@ const OfferGeneralInformationCard = ({
         ) : (
           <Typography sx={styles.element}>{offerElement}</Typography>
         )}
-        {/* <Typography sx={styles.element}>{offerElement}</Typography> */}
       </Box>
     </Box>
   )

@@ -8,8 +8,14 @@ export const styles = {
     border: '1px solid #CFD8DC'
   },
   img: {
-    width: '35px',
-    height: '35px',
+    width: {
+      xs: '20px',
+      md: '35px'
+    },
+    height: {
+      xs: '20px',
+      md: '35px'
+    },
     objectFit: 'cover'
   },
   tick: {
@@ -18,13 +24,19 @@ export const styles = {
     objectFit: 'cover',
     margin: '15px 5px 0 0'
   },
-  title: {
+  title: (theme) => ({
     ...appTypography.h6,
-    color: '#607D8B'
-  },
-  element: {
+    color: '#607D8B',
+    [theme.breakpoints.down('sm')]: {
+      ...appTypography.subtitle3
+    }
+  }),
+  element: (theme) => ({
     ...appTypography.li1,
     color: '#546E7A',
-    marginTop: '10px'
-  }
+    marginTop: '10px',
+    [theme.breakpoints.down('sm')]: {
+      ...appTypography.li2
+    }
+  })
 }
