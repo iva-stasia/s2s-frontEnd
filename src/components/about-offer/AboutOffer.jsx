@@ -10,12 +10,8 @@ const AboutOffer = ({ offer }) => {
   const shortDescroption =
     offer?.description?.split(' ').slice(0, 5).join(' ') + ' ...'
 
-  const handleShowMore = () => {
-    setShowFullDescription(true)
-  }
-
-  const handleShowLess = () => {
-    setShowFullDescription(false)
+  const toggleDescription = () => {
+    setShowFullDescription((prev) => !prev)
   }
 
   return (
@@ -23,10 +19,7 @@ const AboutOffer = ({ offer }) => {
       <Typography sx={styles.description}>
         {showFullDescription ? offer?.description : shortDescroption}
       </Typography>
-      <Typography
-        onClick={showFullDescription ? handleShowLess : handleShowMore}
-        sx={styles.showDescriptionButton}
-      >
+      <Typography onClick={toggleDescription} sx={styles.showDescriptionButton}>
         {t(showFullDescription ? 'common.showLess' : 'common.showMore')}
       </Typography>
     </Box>

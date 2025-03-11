@@ -50,6 +50,12 @@ const appTypography = {
     lineHeight: '20px',
     letterSpacing: '0.1px'
   },
+  subtitle3: {
+    fontWeight: 600,
+    fontSize: '16px',
+    lineHeight: '24px',
+    letterSpacing: '0.15px'
+  },
   body1: {
     fontWeight: 400,
     fontSize: '16px',
@@ -101,6 +107,18 @@ const appTypography = {
     lineHeight: '24px',
     letterSpacing: '0.15px',
     textTransform: 'initial'
+  },
+  li1: {
+    fontWeight: 400,
+    fontSize: '16px',
+    lineHeight: '20px',
+    letterSpacing: '0.5px'
+  },
+  li2: {
+    fontWeight: 400,
+    fontSize: '14px',
+    lineHeight: '20px',
+    letterSpacing: '0.25px'
   }
 }
 

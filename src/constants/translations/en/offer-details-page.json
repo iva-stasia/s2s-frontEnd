@@ -27,6 +27,7 @@
     "subject": "Tutoring subject",
     "levels": "Preparation levels",
     "languages": "Tutoring languages",
+    "duration": "Lesson duration",
     "price": "Pricing"
   },
   "faqTitle": "Frequently asked questions",

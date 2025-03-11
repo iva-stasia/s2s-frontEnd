@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
+import OfferGeneralInformation from '~/components/offer-general-information/OfferGeneralInformation'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
 import OfferDetailsContainer from '~/containers/offer-details-container/OfferDetailsContainer'
 import { useSelector } from 'react-redux'
@@ -45,6 +46,9 @@ const OfferDetails = () => {
       />
       <OfferDetailsContainer title={t('common.aboutOffer')}>
         <AboutOffer offer={offer} />
+      </OfferDetailsContainer>
+      <OfferDetailsContainer title={t('offerDetailsPage.generalInfo.title')}>
+        <OfferGeneralInformation offer={offer} />
       </OfferDetailsContainer>
     </PageWrapper>
   )
