@@ -10,11 +10,6 @@ export const styles = {
     },
     marginTop: '20px'
   },
-  // title: {
-  //   ...appTypography.h5,
-  //   color: '#455A64',
-  //   marginBottom: '30px'
-  // }
   title: (theme) => ({
     ...appTypography.h5,
     color: '#455A64',
