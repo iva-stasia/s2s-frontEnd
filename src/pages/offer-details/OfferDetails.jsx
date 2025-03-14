@@ -12,6 +12,7 @@ import { offerService } from '~/services/offer-service'
 import useAxios from '~/hooks/use-axios'
 import Loader from '~/components/loader/Loader'
 import NotFound from '~/pages/error/NotFound'
+import Faq from '~/containers/student-home-page/faq/Faq'
 
 const OfferDetails = () => {
   const { t } = useTranslation()
@@ -49,6 +50,9 @@ const OfferDetails = () => {
       </OfferDetailsContainer>
       <OfferDetailsContainer title={t('offerDetailsPage.generalInfo.title')}>
         <OfferGeneralInformation offer={offer} />
+      </OfferDetailsContainer>
+      <OfferDetailsContainer title={t('offerDetailsPage.faqTitle')}>
+        <Faq userRole={userRole} />
       </OfferDetailsContainer>
     </PageWrapper>
   )
