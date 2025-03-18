@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
@@ -12,15 +11,13 @@ import { studentRoutes } from '~/router/constants/studentRoutes'
 
 import { styles } from '~/containers/student-home-page/faq/Faq.styles'
 import { student } from '~/constants'
+import useAccordion from '~/hooks/use-accordion'
 
 const Faq = ({ userRole }) => {
   const { t } = useTranslation()
-  const [activeItemId, setActiveItemId] = useState(null)
+  const { activeItemId, changeAccordion } = useAccordion()
 
   const isStudent = userRole === student
-
-  const changeAccordion = (id) =>
-    activeItemId === id ? setActiveItemId(null) : setActiveItemId(id)
 
   return (
     <Box
