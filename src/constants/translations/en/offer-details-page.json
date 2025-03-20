@@ -24,6 +24,7 @@
   },
   "generalInfo": {
     "title": "General information",
+    "availability": "Availability",
     "subject": "Tutoring subject",
     "levels": "Preparation levels",
     "languages": "Tutoring languages",
