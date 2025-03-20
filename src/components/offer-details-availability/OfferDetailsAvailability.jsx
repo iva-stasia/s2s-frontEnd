@@ -5,32 +5,29 @@ import { styles } from '~/components/offer-details-availability/OfferDetailsAvai
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
 
-const formattedDate = (date) => {
+const formatDate = (date) => {
   const locale = navigator.language
 
   const formattedDate = new Intl.DateTimeFormat(locale, {
     day: '2-digit',
-    month: 'short'
-  }).format(date)
-
-  const formattedTime = new Intl.DateTimeFormat(locale, {
+    month: 'short',
     hour: '2-digit',
     minute: '2-digit',
     hour12: false
   }).format(date)
 
-  return `${formattedDate}, ${formattedTime}`
+  return formattedDate
 }
 
 const OfferDetailsAvailability = () => {
   const { t } = useTranslation()
   const [currentFormattedDate, setCurrentFormattedDate] = useState(() =>
-    formattedDate(new Date())
+    formatDate(new Date())
   )
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFormattedDate(formattedDate(new Date()))
+      setCurrentFormattedDate(formatDate(new Date()))
     }, 1000)
 
     return () => clearInterval(interval)
