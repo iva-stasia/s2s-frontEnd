@@ -10,20 +10,24 @@ import { useTranslation } from 'react-i18next'
 const ReviewsList = ({ offer }) => {
   const { t } = useTranslation()
   const [visibleCount, setVisibleCount] = useState(1)
+  const totalReviews = offer.review.length
 
-  const showSubjectLevel =
-    offer.category.name +
-    ' - ' +
-    offer.subject.name +
-    ' - ' +
-    offer.proficiencyLevel[0]
+  const showSubjectLevel = t('constant.offerCategorySubjectLevel', {
+    category: offer.category.name,
+    subject: offer.subject.name,
+    level: offer.proficiencyLevel[0]
+  })
 
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 3)
+  const handleToggleReviews = () => {
+    if (visibleCount >= totalReviews) {
+      setVisibleCount((prev) => Math.max(prev - 3, 1))
+    } else {
+      setVisibleCount((prev) => Math.min(prev + 3, totalReviews))
+    }
   }
 
   const reviewsToShow = offer.review.slice(0, visibleCount)
-  const hasMoreReviews = visibleCount < offer.review.length
+  const allVisible = visibleCount >= totalReviews
   return (
     <Box>
       <Box>
@@ -54,15 +58,13 @@ const ReviewsList = ({ offer }) => {
         })}
         <Divider></Divider>
       </Box>
-      {hasMoreReviews && (
-        <Button
-          onClick={handleLoadMore}
-          sx={styles.moreReviewsBtn}
-          variant='contained'
-        >
-          {t('common.moreReviews')}
-        </Button>
-      )}
+      <Button
+        onClick={handleToggleReviews}
+        sx={styles.moreReviewsBtn}
+        variant='contained'
+      >
+        {allVisible ? t('common.lessReviews') : t('common.moreReviews')}
+      </Button>
     </Box>
   )
 }

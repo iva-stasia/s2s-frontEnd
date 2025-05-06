@@ -4,15 +4,7 @@ import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'
 import StarIcon from '@mui/icons-material/Star'
 import { styles } from '~/components/review-card/ReviewCard.styles.js'
-
-const formatDate = (date) => {
-  const locale = navigator.language
-  return new Intl.DateTimeFormat(locale, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }).format(new Date(date))
-}
+import { formatDateTime } from '~/utils/format-date-time-function'
 
 const ReviewCard = ({
   avatar,
@@ -34,7 +26,9 @@ const ReviewCard = ({
               <Typography>{firstName}</Typography>
               <Typography>{lastName}</Typography>
             </Box>
-            <Typography sx={styles.date}>{formatDate(createdAt)}</Typography>
+            <Typography sx={styles.date}>
+              {formatDateTime(createdAt, 'long')}
+            </Typography>
           </Box>
         </Box>
         <Box sx={styles.descriptionBlock}>

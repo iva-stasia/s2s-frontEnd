@@ -4,30 +4,22 @@ import AppButton from '~/components/app-button/AppButton'
 import { styles } from '~/components/offer-details-availability/OfferDetailsAvailability.styles'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
+import { formatDateTime } from '~/utils/format-date-time-function'
 
-const formatDate = (date) => {
-  const locale = navigator.language
-
-  const formattedDate = new Intl.DateTimeFormat(locale, {
-    day: '2-digit',
-    month: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false
-  }).format(date)
-
-  return formattedDate
-}
+const formatConfiguration = { hour12: false }
+const formatType = 'short'
 
 const OfferDetailsAvailability = () => {
   const { t } = useTranslation()
   const [currentFormattedDate, setCurrentFormattedDate] = useState(() =>
-    formatDate(new Date())
+    formatDateTime(new Date(), formatType, formatConfiguration)
   )
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFormattedDate(formatDate(new Date()))
+      setCurrentFormattedDate(
+        formatDateTime(new Date(), formatType, formatConfiguration)
+      )
     }, 1000)
 
     return () => clearInterval(interval)
