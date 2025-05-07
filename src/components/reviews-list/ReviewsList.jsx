@@ -9,9 +9,10 @@ import { useTranslation } from 'react-i18next'
 
 const ReviewsList = ({ offer }) => {
   const { t } = useTranslation()
-  const [visibleCount, setVisibleCount] = useState(1)
   const totalReviews = offer.review.length
-
+  const initialReviewCount = 1
+  const reviewsStep = 3
+  const [visibleCount, setVisibleCount] = useState(initialReviewCount)
   const showSubjectLevel = t('constant.offerCategorySubjectLevel', {
     category: offer.category.name,
     subject: offer.subject.name,
@@ -20,9 +21,11 @@ const ReviewsList = ({ offer }) => {
 
   const handleToggleReviews = () => {
     if (visibleCount >= totalReviews) {
-      setVisibleCount((prev) => Math.max(prev - 3, 1))
+      setVisibleCount((prev) =>
+        Math.max(prev - reviewsStep, initialReviewCount)
+      )
     } else {
-      setVisibleCount((prev) => Math.min(prev + 3, totalReviews))
+      setVisibleCount((prev) => Math.min(prev + reviewsStep, totalReviews))
     }
   }
 
