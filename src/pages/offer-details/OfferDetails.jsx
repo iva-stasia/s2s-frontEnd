@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
+import ReviewsList from '~/components/reviews-list/ReviewsList'
 import OfferDetailsAvailability from '~/components/offer-details-availability/OfferDetailsAvailability'
 import OfferGeneralInformation from '~/components/offer-general-information/OfferGeneralInformation'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
@@ -111,6 +112,9 @@ const OfferDetails = () => {
           }}
           titleVariant={'h6'}
         />
+      </OfferDetailsContainer>
+      <OfferDetailsContainer title={t('offerDetailsPage.reviewsTitle')}>
+        <ReviewsList offer={offer} />
       </OfferDetailsContainer>
     </PageWrapper>
   )
