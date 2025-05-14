@@ -23,5 +23,8 @@ export const styles = {
     },
     width: '230px',
     height: '40px'
+  },
+  noReviewsMessage: {
+    color: 'red'
   }
 }
