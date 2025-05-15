@@ -5,6 +5,7 @@ import AboutOffer from '~/components/about-offer/AboutOffer'
 import ReviewsList from '~/components/reviews-list/ReviewsList'
 import OfferDetailsAvailability from '~/components/offer-details-availability/OfferDetailsAvailability'
 import OfferGeneralInformation from '~/components/offer-general-information/OfferGeneralInformation'
+import OfferDetailsOtherOffers from '~/components/offer-details-other-offers/OfferDetailsOtherOffers'
 import offerIcon from '~/assets/img/offer-page/offer-icon.svg'
 import OfferDetailsContainer from '~/containers/offer-details-container/OfferDetailsContainer'
 import { useSelector } from 'react-redux'
@@ -116,6 +117,7 @@ const OfferDetails = () => {
       <OfferDetailsContainer title={t('offerDetailsPage.reviewsTitle')}>
         <ReviewsList offer={offer} />
       </OfferDetailsContainer>
+      <OfferDetailsOtherOffers offer={offer} />
     </PageWrapper>
   )
 }
