@@ -36,5 +36,6 @@
   "offerBanner":{
     "saveOfferButton":"Save Offer"
 
-  }
+  },
+  "offerIssuesOrFeedback": "<0>If you encounter any issues or have feedback regarding the offer, please report them using the provided</0> <1>Complaint form</1>"
 }
