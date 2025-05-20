@@ -1,4 +1,6 @@
 import { useCallback } from 'react'
+import Typography from '@mui/material/Typography'
+import { Trans } from 'react-i18next'
 import PageWrapper from '~/components/page-wrapper/PageWrapper'
 import HeaderCard from '~/components/header-card/HeaderCard'
 import AboutOffer from '~/components/about-offer/AboutOffer'
@@ -21,6 +23,7 @@ import useAccordion from '~/hooks/use-accordion'
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded'
 import { accordionItems } from '~/containers/student-home-page/faq/accordionItems'
 import { tutorAccordionItems } from '~/containers/tutor-home-page/faq/tutorAccordionItems'
+import OfferCard from '~/components/offer-card/OfferCard'
 
 const OfferDetails = () => {
   const { t } = useTranslation()
@@ -55,12 +58,35 @@ const OfferDetails = () => {
             : 'offerDetailsPage.topBlock.title.student'
         }
       />
+      <OfferDetailsContainer sx={{ padding: 0 }}>
+        <OfferCard offer={offer} />
+      </OfferDetailsContainer>
       <OfferDetailsContainer title={t('common.aboutOffer')}>
         <AboutOffer offer={offer} />
       </OfferDetailsContainer>
       <OfferDetailsContainer title={t('offerDetailsPage.generalInfo.title')}>
         <OfferGeneralInformation offer={offer} />
       </OfferDetailsContainer>
+      <Typography
+        component='span'
+        sx={{ color: '#455A64', marginTop: '20px' }}
+        variant='body2'
+      >
+        <Trans
+          components={{
+            0: <span />,
+            1: (
+              <a
+                style={{
+                  textDecoration: 'underline',
+                  cursor: 'pointer'
+                }}
+              />
+            )
+          }}
+          i18nKey='offerDetailsPage.offerIssuesOrFeedback'
+        />
+      </Typography>
       <OfferDetailsContainer
         title={t('offerDetailsPage.generalInfo.availability')}
       >

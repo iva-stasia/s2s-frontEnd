@@ -8,7 +8,8 @@ export const styles = {
       md: '35px 60px 55px',
       xs: '15px 20px 10px'
     },
-    marginTop: '20px'
+    marginTop: '20px',
+    backgroundColor: 'basic.white'
   },
   title: (theme) => ({
     ...appTypography.h5,
