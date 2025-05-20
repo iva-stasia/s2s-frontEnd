@@ -50,8 +50,5 @@
   },
   "notFound":{
     "description": "We couldn’t find what you were searching for."
-  },
-  "otherOffers":{
-    "title":"Other offers"
   }
 }

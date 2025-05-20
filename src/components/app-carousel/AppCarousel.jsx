@@ -1,37 +1,35 @@
-import {
-  ArrowBackIosRounded,
-  ArrowForwardIosRounded
-} from '@mui/icons-material'
-import IconButton from '@mui/material/IconButton'
 import Carousel from 'nuka-carousel'
+import { forwardRef, useImperativeHandle, useState } from 'react'
 
-const AppCarousel = ({ children, settings }) => {
-  const leftArrow = ({ previousSlide }) => (
-    <IconButton onClick={previousSlide} sx={settings?.leftButtonStyles}>
-      <ArrowBackIosRounded sx={settings?.leftArrowStyles} />
-    </IconButton>
-  )
+const AppCarousel = forwardRef(({ children, settings }, ref) => {
+  const [slideIndex, setSlideIndex] = useState(0)
+  const totalSlides = Array.isArray(children) ? children.length : 1
+  const slidesToShow = Number(settings?.slidesToShow) || 1
 
-  const rightArrow = ({ nextSlide }) => (
-    <IconButton onClick={nextSlide} sx={settings?.rightButtonStyles}>
-      <ArrowForwardIosRounded sx={settings?.rightArrowStyles} />
-    </IconButton>
-  )
+  useImperativeHandle(ref, () => ({
+    next: () =>
+      setSlideIndex((prev) =>
+        prev + slidesToShow >= totalSlides ? prev : prev + slidesToShow
+      ),
+    prev: () =>
+      setSlideIndex((prev) =>
+        prev - slidesToShow < 0 ? 0 : prev - slidesToShow
+      )
+  }))
 
   return (
     <Carousel
-      autoplay
-      cellSpacing={24}
-      renderCenterLeftControls={leftArrow}
-      renderCenterRightControls={rightArrow}
+      afterSlide={setSlideIndex}
+      slideIndex={slideIndex}
+      slidesToShow={slidesToShow}
       style={{ paddingBottom: '36px' }}
-      withoutControls={Number(settings?.slidesToShow) >= children.length}
-      wrapAround={children.length > Number(settings?.slidesToShow)}
+      wrapAround={false}
       {...settings}
     >
       {children}
     </Carousel>
   )
-}
+})
 
+AppCarousel.displayName = 'AppCarousel'
 export default AppCarousel
